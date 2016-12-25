@@ -95,11 +95,16 @@ public class MainApp extends Application {
         });
 
         //сервис отслеживания изменений на диске в syncFolder
-        directoryWatchingService = new DirectoryWatchingService();
+        if (!AppSettings.getInstance().getProperty(AppSettings.PROPERTIES_KEYS.SINCHRONIZATION_PATH).equals("null")){
+            directoryWatchingService = new DirectoryWatchingService();
+
+            directoryWatchingService.addConsumerEventListener(this::syncFolderChangeListener);
+            directoryWatchingService.start();
+        }
 
 
-        directoryWatchingService.addConsumerEventListener(this::syncFolderChangeListener);
-        directoryWatchingService.start();
+
+
 
         //Создаём сервис синхронизации изменений на диске в папке синхронизации с EFS (пока не запущен)
         syncService = new SyncService(dataManager, Paths.get(AppSettings.getInstance().getProperty(AppSettings.PROPERTIES_KEYS.SINCHRONIZATION_PATH)));

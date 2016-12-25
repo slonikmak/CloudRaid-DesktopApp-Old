@@ -31,8 +31,11 @@ public class EventProducer implements Runnable{
         this.trace = true;
     }
 
-    private void initPath() {
+    private void initPath() throws IOException {
         watchingFile = Paths.get(AppSettings.getInstance().getProperty(AppSettings.PROPERTIES_KEYS.SINCHRONIZATION_PATH));
+        if (!Files.exists(watchingFile)){
+            Files.createDirectory(watchingFile);
+        }
     }
 
     private void register(Path dir) throws IOException {

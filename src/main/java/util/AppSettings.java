@@ -54,8 +54,9 @@ public class AppSettings {
         }
     }
     public void setProperty(PROPERTIES_KEYS key, String val){
-
+        System.out.println("Store");
         properties.setProperty(key.toString(), val);
+
     }
 
 
