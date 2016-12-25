@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * FIXME изменить поле PATH объектов EFSItem на стандартное понятие Path. сейчас Path хранит путь к элементу без его имени, а надо чтобы включало имя
+ * FIXME изменить поле PATH объектов EFSItem на стандартный объект Path. сейчас Path хранит путь к элементу без его имени, а надо чтобы включало имя
  * @author Cloudraid Dev Team (cloudraid.stnetix.com)
  */
 public class DAOFileItemImpl implements DAOFileItem {
